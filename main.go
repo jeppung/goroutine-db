@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"os"
 	"sync"
 	"time"
 
@@ -86,6 +85,7 @@ func addWorker(workers uint, ch <- chan  *models.User, wg *sync.WaitGroup) {
 }
 
 func AddDataToDb(user *models.User, workerId int, wg *sync.WaitGroup) {
+	count := 0
 	for {
 		res := database.Client.Create(user)
 
@@ -93,11 +93,15 @@ func AddDataToDb(user *models.User, workerId int, wg *sync.WaitGroup) {
 			wg.Done()
 			fmt.Printf("Worker(%d) done working on inserting %v\n", workerId, user.Username)
 			break
-		}else{
-			fmt.Println("Error:", res.Error)
-			os.Exit(1)
+		}
+
+		if count == 3 {
+			wg.Done()
+			fmt.Printf("Worker(%d) fail on inserting %v\n", workerId, user.Username)
+			break
 		}
 
 		fmt.Printf("Worker(%d) retrying on inserting %v\n", workerId, user.Username)
+		count++
 	}
 }
