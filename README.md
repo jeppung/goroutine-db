@@ -7,11 +7,11 @@ Goroutine concurrency demo inserting **1.000.000 data**  with
 
 You are going to see how fast it takes to insert 1.000.000 data to database
 
-### !! Important !!
+## !! Important !!
 - timer start after reading excel data
 - result may vary with different hardware specification
 
-### How to run
+## How to run
 - clone this repo
 - create postgres db named -> goroutine-db
 - rename .env.example -> .env
