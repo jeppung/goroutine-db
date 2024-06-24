@@ -20,9 +20,8 @@ func init() {
 
 func main() {
 	var wg sync.WaitGroup
-	start := time.Now()
 	jobChannel := make(chan *models.User, 100)
-
+	
 	// Reading excel
 	fmt.Println("Reading excel data...")
 	excelData, err := readingExcel()
@@ -32,6 +31,7 @@ func main() {
 	}
 	
 	// Start working with data from excel
+	start := time.Now()
 	go addWorker(50, jobChannel, &wg)
 	addJob(excelData, jobChannel, &wg)
 	
