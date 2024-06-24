@@ -44,7 +44,7 @@ func main() {
 }
 
 func readingExcel() ([][]string, error) {
-	f, err := excelize.OpenFile("./example_data.xlsx")
+	f, err := excelize.OpenFile("./user_data.xlsx")
 	defer f.Close()
 
 	if err != nil {
