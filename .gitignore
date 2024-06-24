@@ -1,2 +1,3 @@
 .env
 data_seeder_excel.py
+.DS_Store
