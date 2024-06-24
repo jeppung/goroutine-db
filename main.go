@@ -9,10 +9,12 @@ import (
 
 	"github.com/jeppung/goroutine-db/database"
 	"github.com/jeppung/goroutine-db/models"
+	"github.com/joho/godotenv"
 	"github.com/xuri/excelize/v2"
 )
 
 func init() {
+	godotenv.Load() // Loading env variable
 	database.ConnectToDB()
 	database.Migration()
 }
