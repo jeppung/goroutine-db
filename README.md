@@ -7,6 +7,12 @@ Goroutine concurrency demo inserting **1.000.000 data**  with
 
 You are going to see how fast it takes to insert 1.000.000 data to database
 
+## Results
+
+Goroutine | Without Goroutine
+--- | ---
+![](./result/with-goroutine.png) | ![](./result/without-goroutine.png)
+
 ## !! Important !!
 - timer start after reading excel data
 - result may vary with different hardware specification
